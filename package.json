@@ -15,6 +15,7 @@
     "@nuxt/test-utils": "3.18.0",
     "@nuxt/ui": "3.1.1",
     "@tailwindcss/vite": "^4.1.6",
+    "chart.js": "^4.4.9",
     "eslint": "^9.26.0",
     "nuxt": "^3.17.3",
     "tailwindcss": "^4.1.6",

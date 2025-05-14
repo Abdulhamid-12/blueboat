@@ -17,10 +17,10 @@ import {
 } from 'chart.js'
 
 // Import the datalabels plugin
-import ChartDataLabels from 'chartjs-plugin-datalabels';
+// import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 // Register the necessary Chart.js components for a Line Chart
-ChartJS.register(CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, ChartDataLabels);
+ChartJS.register(CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend);
 
 const type = computed(() => {
     switch (props.type.toLowerCase()) {
