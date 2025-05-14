@@ -2,9 +2,9 @@
   <div class="min-h-screen flex items-center justify-center bg-gray-100">
     <div class="w-full max-w-md bg-white rounded-lg shadow-md p-6">
       <img
-        src="~/assets/images/kfupm_logo_en.svg"
+        src="~/assets/images/kfupm-logo.png"
         alt="Hader Logo"
-        class="w-60 mx-auto mb-10"
+        class="w-60 mx-auto mb-5"
       />
       <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">
         BlueBoat Portal

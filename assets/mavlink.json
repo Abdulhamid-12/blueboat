@@ -1,0 +1,1003 @@
+{
+    "vehicles": {
+      "255": {
+        "id": 255,
+        "components": {
+          "240": {
+            "id": 240,
+            "messages": {
+              "HEARTBEAT": {
+                "message": {
+                  "type": "HEARTBEAT",
+                  "custom_mode": 0,
+                  "mavtype": {
+                    "type": "MAV_TYPE_GCS"
+                  },
+                  "autopilot": {
+                    "type": "MAV_AUTOPILOT_INVALID"
+                  },
+                  "base_mode": {
+                    "bits": 192
+                  },
+                  "system_status": {
+                    "type": "MAV_STATE_ACTIVE"
+                  },
+                  "mavlink_version": 1
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:16.509499269Z",
+                    "last_update": "2025-04-21T09:37:41.371527612Z",
+                    "counter": 700,
+                    "frequency": 0.014594279
+                  }
+                }
+              }
+            }
+          },
+          "190": {
+            "id": 190,
+            "messages": {
+              "HEARTBEAT": {
+                "message": {
+                  "type": "HEARTBEAT",
+                  "custom_mode": 0,
+                  "mavtype": {
+                    "type": "MAV_TYPE_GCS"
+                  },
+                  "autopilot": {
+                    "type": "MAV_AUTOPILOT_INVALID"
+                  },
+                  "base_mode": {
+                    "bits": 192
+                  },
+                  "system_status": {
+                    "type": "MAV_STATE_ACTIVE"
+                  },
+                  "mavlink_version": 3
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:09.419225792Z",
+                    "last_update": "2025-04-21T09:40:58.029389888Z",
+                    "counter": 1367,
+                    "frequency": 0.028379837
+                  }
+                }
+              }
+            }
+          },
+          "0": {
+            "id": 0,
+            "messages": {
+              "PARAM_REQUEST_LIST": {
+                "message": {
+                  "type": "PARAM_REQUEST_LIST",
+                  "target_system": 1,
+                  "target_component": 1
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-21T09:20:31.905106347Z",
+                    "last_update": "2025-04-21T09:33:45.339937703Z",
+                    "counter": 4,
+                    "frequency": 0.005044136
+                  }
+                }
+              },
+              "COMMAND_LONG": {
+                "message": {
+                  "type": "COMMAND_LONG",
+                  "param1": 1,
+                  "param2": 333333.34,
+                  "param3": 0,
+                  "param4": 0,
+                  "param5": 0,
+                  "param6": 0,
+                  "param7": 0,
+                  "command": {
+                    "type": "MAV_CMD_SET_MESSAGE_INTERVAL"
+                  },
+                  "target_system": 1,
+                  "target_component": 0,
+                  "confirmation": 0
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-21T09:33:44.087784825Z",
+                    "last_update": "2025-04-21T09:33:44.087794455Z",
+                    "counter": 2,
+                    "frequency": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "1": {
+        "id": 1,
+        "components": {
+          "1": {
+            "id": 1,
+            "messages": {
+              "RC_CHANNELS_SCALED": {
+                "message": {
+                  "type": "RC_CHANNELS_SCALED",
+                  "time_boot_ms": 1374346,
+                  "chan1_scaled": 0,
+                  "chan2_scaled": 0,
+                  "chan3_scaled": 0,
+                  "chan4_scaled": 0,
+                  "chan5_scaled": 0,
+                  "chan6_scaled": 0,
+                  "chan7_scaled": 0,
+                  "chan8_scaled": 0,
+                  "port": 0,
+                  "rssi": 255
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:10.913284717Z",
+                    "last_update": "2025-04-21T09:40:58.363115837Z",
+                    "counter": 13701,
+                    "frequency": 0.28444785
+                  }
+                }
+              },
+              "GLOBAL_POSITION_INT": {
+                "message": {
+                  "type": "GLOBAL_POSITION_INT",
+                  "time_boot_ms": 1374286,
+                  "lat": 0,
+                  "lon": 0,
+                  "alt": 1640,
+                  "relative_alt": 1647,
+                  "vx": 0,
+                  "vy": 0,
+                  "vz": 0,
+                  "hdg": 11544
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:10.898947606Z",
+                    "last_update": "2025-04-21T09:40:58.302546966Z",
+                    "counter": 4115,
+                    "frequency": 0.08543193
+                  }
+                }
+              },
+              "STATUSTEXT": {
+                "message": {
+                  "type": "STATUSTEXT",
+                  "severity": {
+                    "type": "MAV_SEVERITY_INFO"
+                  },
+                  "text": [
+                    "I",
+                    "M",
+                    "U",
+                    "0",
+                    ":",
+                    " ",
+                    "f",
+                    "a",
+                    "s",
+                    "t",
+                    " ",
+                    "s",
+                    "a",
+                    "m",
+                    "p",
+                    "l",
+                    "i",
+                    "n",
+                    "g",
+                    " ",
+                    "e",
+                    "n",
+                    "a",
+                    "b",
+                    "l",
+                    "e",
+                    "d",
+                    " ",
+                    "8",
+                    ".",
+                    "0",
+                    "k",
+                    "H",
+                    "z",
+                    "/",
+                    "1",
+                    ".",
+                    "0",
+                    "k",
+                    "H",
+                    "z",
+                    "\u0000",
+                    "\u0000",
+                    "\u0000",
+                    "\u0000",
+                    "\u0000",
+                    "\u0000",
+                    "\u0000",
+                    "\u0000",
+                    "\u0000"
+                  ],
+                  "id": 0,
+                  "chunk_seq": 0
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:09.028242200Z",
+                    "last_update": "2025-04-21T09:33:45.363707041Z",
+                    "counter": 23,
+                    "frequency": 0.00048181665
+                  }
+                }
+              },
+              "AHRS": {
+                "message": {
+                  "type": "AHRS",
+                  "omegaIx": -0.0018010805,
+                  "omegaIy": 0.002221209,
+                  "omegaIz": 0.0013330125,
+                  "accel_weight": 0,
+                  "renorm_val": 0,
+                  "error_rp": 0.0012546475,
+                  "error_yaw": 0.0029837526
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:10.901293365Z",
+                    "last_update": "2025-04-21T09:40:58.303363329Z",
+                    "counter": 4115,
+                    "frequency": 0.08543193
+                  }
+                }
+              },
+              "VIBRATION": {
+                "message": {
+                  "type": "VIBRATION",
+                  "time_usec": 1374286122,
+                  "vibration_x": 0.016135404,
+                  "vibration_y": 0.016689392,
+                  "vibration_z": 0.014472096,
+                  "clipping_0": 0,
+                  "clipping_1": 0,
+                  "clipping_2": 0
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:10.903245810Z",
+                    "last_update": "2025-04-21T09:40:58.312117182Z",
+                    "counter": 4115,
+                    "frequency": 0.08543193
+                  }
+                }
+              },
+              "ATTITUDE": {
+                "message": {
+                  "type": "ATTITUDE",
+                  "time_boot_ms": 1374346,
+                  "roll": -0.034403548,
+                  "pitch": 0.005458932,
+                  "yaw": 2.0147777,
+                  "rollspeed": -0.000010309857,
+                  "pitchspeed": 0.000091796275,
+                  "yawspeed": 0.00013940805
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:10.913199550Z",
+                    "last_update": "2025-04-21T09:40:58.362492851Z",
+                    "counter": 13701,
+                    "frequency": 0.28444785
+                  }
+                }
+              },
+              "SCALED_IMU3": {
+                "message": {
+                  "type": "SCALED_IMU3",
+                  "time_boot_ms": 1374326,
+                  "xacc": 0,
+                  "yacc": 0,
+                  "zacc": 0,
+                  "xgyro": 0,
+                  "ygyro": 0,
+                  "zgyro": 0,
+                  "xmag": -90,
+                  "ymag": -367,
+                  "zmag": 38,
+                  "temperature": 0
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:11.778098272Z",
+                    "last_update": "2025-04-21T09:40:58.351879505Z",
+                    "counter": 2744,
+                    "frequency": 0.056969646
+                  }
+                }
+              },
+              "MISSION_CURRENT": {
+                "message": {
+                  "type": "MISSION_CURRENT",
+                  "seq": 0
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:11.776947717Z",
+                    "last_update": "2025-04-21T09:40:58.344295658Z",
+                    "counter": 2744,
+                    "frequency": 0.056969646
+                  }
+                }
+              },
+              "BATTERY_STATUS": {
+                "message": {
+                  "type": "BATTERY_STATUS",
+                  "current_consumed": 190,
+                  "energy_consumed": 105,
+                  "temperature": 32767,
+                  "voltages": [15341, 65535, 65535, 65535, 65535, 65535, 65535, 65535, 65535, 65535],
+                  "current_battery": 63,
+                  "id": 0,
+                  "battery_function": {
+                    "type": "MAV_BATTERY_FUNCTION_UNKNOWN"
+                  },
+                  "mavtype": {
+                    "type": "MAV_BATTERY_TYPE_UNKNOWN"
+                  },
+                  "battery_remaining": -1,
+                  "time_remaining": 0,
+                  "charge_state": {
+                    "type": "MAV_BATTERY_CHARGE_STATE_OK"
+                  }
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:10.911116865Z",
+                    "last_update": "2025-04-21T09:40:58.312340245Z",
+                    "counter": 4115,
+                    "frequency": 0.08543193
+                  }
+                }
+              },
+              "SYSTEM_TIME": {
+                "message": {
+                  "type": "SYSTEM_TIME",
+                  "time_unix_usec": 0,
+                  "time_boot_ms": 1374286
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:10.901251199Z",
+                    "last_update": "2025-04-21T09:40:58.302941980Z",
+                    "counter": 4115,
+                    "frequency": 0.08543193
+                  }
+                }
+              },
+              "SCALED_PRESSURE": {
+                "message": {
+                  "type": "SCALED_PRESSURE",
+                  "time_boot_ms": 1374326,
+                  "press_abs": 1003.5706,
+                  "press_diff": 0,
+                  "temperature": 3707
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:11.784438550Z",
+                    "last_update": "2025-04-21T09:40:58.352320280Z",
+                    "counter": 2744,
+                    "frequency": 0.056969646
+                  }
+                }
+              },
+              "AHRS2": {
+                "message": {
+                  "type": "AHRS2",
+                  "roll": -0.033970892,
+                  "pitch": 0.0053516612,
+                  "yaw": 2.0159833,
+                  "altitude": 0,
+                  "lat": 0,
+                  "lng": 0
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:12.995360845Z",
+                    "last_update": "2025-04-21T09:40:58.363658190Z",
+                    "counter": 13683,
+                    "frequency": 0.28408596
+                  }
+                }
+              },
+              "RAW_IMU": {
+                "message": {
+                  "type": "RAW_IMU",
+                  "time_usec": 1374326150,
+                  "xacc": 4,
+                  "yacc": 15,
+                  "zacc": -992,
+                  "xgyro": 1,
+                  "ygyro": -2,
+                  "zgyro": -1,
+                  "xmag": -66,
+                  "ymag": -389,
+                  "zmag": 74,
+                  "id": 0,
+                  "temperature": 4208
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:11.777804124Z",
+                    "last_update": "2025-04-21T09:40:58.345635687Z",
+                    "counter": 2744,
+                    "frequency": 0.056969646
+                  }
+                }
+              },
+              "DISTANCE_SENSOR": {
+                "message": {
+                  "type": "DISTANCE_SENSOR",
+                  "time_boot_ms": 1374286,
+                  "min_distance": 20,
+                  "max_distance": 12000,
+                  "current_distance": 9589,
+                  "mavtype": {
+                    "type": "MAV_DISTANCE_SENSOR_ULTRASOUND"
+                  },
+                  "id": 0,
+                  "orientation": {
+                    "type": "MAV_SENSOR_ROTATION_PITCH_270"
+                  },
+                  "covariance": 0,
+                  "horizontal_fov": 0,
+                  "vertical_fov": 0,
+                  "quaternion": [0, 0, 0, 0],
+                  "signal_quality": 1
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:36.808642554Z",
+                    "last_update": "2025-04-21T09:40:58.305782009Z",
+                    "counter": 3919,
+                    "frequency": 0.0814067
+                  }
+                }
+              },
+              "GPS_RAW_INT": {
+                "message": {
+                  "type": "GPS_RAW_INT",
+                  "time_usec": 0,
+                  "lat": 523648108,
+                  "lon": 665990269,
+                  "alt": 13394150,
+                  "eph": 9999,
+                  "epv": 9999,
+                  "vel": 0,
+                  "cog": 0,
+                  "fix_type": {
+                    "type": "GPS_FIX_TYPE_NO_FIX"
+                  },
+                  "satellites_visible": 0,
+                  "alt_ellipsoid": 13368990,
+                  "h_acc": 4294967295,
+                  "v_acc": 3750107136,
+                  "vel_acc": 20001,
+                  "hdg_acc": 0,
+                  "yaw": 0
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:11.785277105Z",
+                    "last_update": "2025-04-21T09:40:58.353101401Z",
+                    "counter": 2744,
+                    "frequency": 0.056969646
+                  }
+                }
+              },
+              "VFR_HUD": {
+                "message": {
+                  "type": "VFR_HUD",
+                  "airspeed": 0,
+                  "groundspeed": 0,
+                  "alt": 1.61,
+                  "climb": 0.1617693,
+                  "heading": 115,
+                  "throttle": 0
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:10.913254976Z",
+                    "last_update": "2025-04-21T09:40:58.362755138Z",
+                    "counter": 13701,
+                    "frequency": 0.28444785
+                  }
+                }
+              },
+              "PID_TUNING": {
+                "message": {
+                  "type": "PID_TUNING",
+                  "desired": 0,
+                  "achieved": 0,
+                  "FF": 0,
+                  "P": 0,
+                  "I": 0,
+                  "D": 0,
+                  "axis": {
+                    "type": "PID_TUNING_STEER"
+                  }
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:10.913731180Z",
+                    "last_update": "2025-04-21T09:40:58.364121188Z",
+                    "counter": 13701,
+                    "frequency": 0.28444785
+                  }
+                }
+              },
+              "COMMAND_ACK": {
+                "message": {
+                  "type": "COMMAND_ACK",
+                  "command": {
+                    "type": "MAV_CMD_REQUEST_MESSAGE"
+                  },
+                  "result": {
+                    "type": "MAV_RESULT_ACCEPTED"
+                  },
+                  "progress": 0,
+                  "result_param2": 0,
+                  "target_system": 1,
+                  "target_component": 194
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:32.620800760Z",
+                    "last_update": "2025-04-21T09:39:59.782155400Z",
+                    "counter": 7,
+                    "frequency": 0.00014556949
+                  }
+                }
+              },
+              "NAMED_VALUE_FLOAT": {
+                "message": {
+                  "type": "NAMED_VALUE_FLOAT",
+                  "time_boot_ms": 1374326,
+                  "value": 0,
+                  "name": [
+                    "A",
+                    "p",
+                    "p",
+                    "W",
+                    "n",
+                    "d",
+                    "D",
+                    "i",
+                    "r",
+                    "\u0000"
+                  ]
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:10.901456087Z",
+                    "last_update": "2025-04-21T09:40:58.353686033Z",
+                    "counter": 10973,
+                    "frequency": 0.22781157
+                  }
+                }
+              },
+              "TIMESYNC": {
+                "message": {
+                  "type": "TIMESYNC",
+                  "tc1": 0,
+                  "ts1": 1372325961001
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:18.455021194Z",
+                    "last_update": "2025-04-21T09:40:56.341936599Z",
+                    "counter": 138,
+                    "frequency": 0.002865627
+                  }
+                }
+              },
+              "POWER_STATUS": {
+                "message": {
+                  "type": "POWER_STATUS",
+                  "Vcc": 5000,
+                  "Vservo": 0,
+                  "flags": {
+                    "bits": 0
+                  }
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:11.776798383Z",
+                    "last_update": "2025-04-21T09:40:58.343581298Z",
+                    "counter": 2744,
+                    "frequency": 0.056969646
+                  }
+                }
+              },
+              "AUTOPILOT_VERSION": {
+                "message": {
+                  "type": "AUTOPILOT_VERSION",
+                  "capabilities": {
+                    "bits": 61935
+                  },
+                  "uid": 0,
+                  "flight_sw_version": 67438591,
+                  "middleware_sw_version": 0,
+                  "os_sw_version": 0,
+                  "board_version": 0,
+                  "vendor_id": 0,
+                  "product_id": 0,
+                  "flight_custom_version": [53, 50, 98, 101, 100, 56, 100, 53],
+                  "middleware_custom_version": [0, 0, 0, 0, 0, 0, 0, 0],
+                  "os_custom_version": [0, 0, 0, 0, 0, 0, 0, 0],
+                  "uid2": [49, 56, 98, 53, 49, 97, 53, 48, 56, 52, 97, 100, 52, 49, 51, 100, 97, 102]
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:32.620942889Z",
+                    "last_update": "2025-04-21T09:39:59.782334572Z",
+                    "counter": 6,
+                    "frequency": 0.00012477385
+                  }
+                }
+              },
+              "EKF_STATUS_REPORT": {
+                "message": {
+                  "type": "EKF_STATUS_REPORT",
+                  "velocity_variance": 0,
+                  "pos_horiz_variance": 0.004026137,
+                  "pos_vert_variance": 0.003254576,
+                  "compass_variance": 0.0015732235,
+                  "terrain_alt_variance": 0,
+                  "flags": {
+                    "bits": 231
+                  },
+                  "airspeed_variance": 0
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:12.156537902Z",
+                    "last_update": "2025-04-21T09:40:58.306316806Z",
+                    "counter": 4112,
+                    "frequency": 0.08537143
+                  }
+                }
+              },
+              "HEARTBEAT": {
+                "message": {
+                  "type": "HEARTBEAT",
+                  "custom_mode": 0,
+                  "mavtype": {
+                    "type": "MAV_TYPE_SURFACE_BOAT"
+                  },
+                  "autopilot": {
+                    "type": "MAV_AUTOPILOT_ARDUPILOTMEGA"
+                  },
+                  "base_mode": {
+                    "bits": 65
+                  },
+                  "system_status": {
+                    "type": "MAV_STATE_ACTIVE"
+                  },
+                  "mavlink_version": 3
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:09.484452440Z",
+                    "last_update": "2025-04-21T09:40:58.342485037Z",
+                    "counter": 1378,
+                    "frequency": 0.028608205
+                  }
+                }
+              },
+              "PARAM_VALUE": {
+                "message": {
+                  "type": "PARAM_VALUE",
+                  "param_value": 105863,
+                  "param_count": 991,
+                  "param_index": 65535,
+                  "param_id": [
+                    "S",
+                    "T",
+                    "A",
+                    "T",
+                    "_",
+                    "R",
+                    "U",
+                    "N",
+                    "T",
+                    "I",
+                    "M",
+                    "E",
+                    "\u0000",
+                    "\u0000",
+                    "\u0000",
+                    "\u0000"
+                  ],
+                  "param_type": {
+                    "type": "MAV_PARAM_TYPE_INT32"
+                  }
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:09.028474515Z",
+                    "last_update": "2025-04-21T09:40:47.843583761Z",
+                    "counter": 3020,
+                    "frequency": 0.06271025
+                  }
+                }
+              },
+              "MEMINFO": {
+                "message": {
+                  "type": "MEMINFO",
+                  "brkval": 0,
+                  "freemem": 65535,
+                  "freemem32": 262144
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:11.776845291Z",
+                    "last_update": "2025-04-21T09:40:58.343807973Z",
+                    "counter": 2744,
+                    "frequency": 0.056969646
+                  }
+                }
+              },
+              "SERVO_OUTPUT_RAW": {
+                "message": {
+                  "type": "SERVO_OUTPUT_RAW",
+                  "time_usec": 1374326129,
+                  "servo1_raw": 1510,
+                  "servo2_raw": 0,
+                  "servo3_raw": 1510,
+                  "servo4_raw": 0,
+                  "servo5_raw": 0,
+                  "servo6_raw": 0,
+                  "servo7_raw": 0,
+                  "servo8_raw": 0,
+                  "port": 0,
+                  "servo9_raw": 0,
+                  "servo10_raw": 0,
+                  "servo11_raw": 0,
+                  "servo12_raw": 0,
+                  "servo13_raw": 0,
+                  "servo14_raw": 0,
+                  "servo15_raw": 0,
+                  "servo16_raw": 0
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:11.777105142Z",
+                    "last_update": "2025-04-21T09:40:58.344691931Z",
+                    "counter": 2744,
+                    "frequency": 0.056969646
+                  }
+                }
+              },
+              "SYS_STATUS": {
+                "message": {
+                  "type": "SYS_STATUS",
+                  "onboard_control_sensors_present": {
+                    "bits": 321969455
+                  },
+                  "onboard_control_sensors_enabled": {
+                    "bits": 304120111
+                  },
+                  "onboard_control_sensors_health": {
+                    "bits": 319848751
+                  },
+                  "load": 45,
+                  "voltage_battery": 15341,
+                  "current_battery": 63,
+                  "drop_rate_comm": 0,
+                  "errors_comm": 0,
+                  "errors_count1": 0,
+                  "errors_count2": 0,
+                  "errors_count3": 0,
+                  "errors_count4": 0,
+                  "battery_remaining": -1
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:11.774956013Z",
+                    "last_update": "2025-04-21T09:40:58.343312511Z",
+                    "counter": 2745,
+                    "frequency": 0.056990407
+                  }
+                }
+              },
+              "WIND": {
+                "message": {
+                  "type": "WIND",
+                  "direction": 0,
+                  "speed": 0,
+                  "speed_z": 0
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:10.901308569Z",
+                    "last_update": "2025-04-21T09:40:58.303821512Z",
+                    "counter": 4115,
+                    "frequency": 0.08543193
+                  }
+                }
+              },
+              "RANGEFINDER": {
+                "message": {
+                  "type": "RANGEFINDER",
+                  "distance": 95.89,
+                  "voltage": 0
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:10.903184013Z",
+                    "last_update": "2025-04-21T09:40:58.305341178Z",
+                    "counter": 4115,
+                    "frequency": 0.08543193
+                  }
+                }
+              },
+              "RC_CHANNELS": {
+                "message": {
+                  "type": "RC_CHANNELS",
+                  "time_boot_ms": 1374326,
+                  "chan1_raw": 0,
+                  "chan2_raw": 0,
+                  "chan3_raw": 0,
+                  "chan4_raw": 0,
+                  "chan5_raw": 0,
+                  "chan6_raw": 0,
+                  "chan7_raw": 0,
+                  "chan8_raw": 0,
+                  "chan9_raw": 0,
+                  "chan10_raw": 0,
+                  "chan11_raw": 0,
+                  "chan12_raw": 0,
+                  "chan13_raw": 0,
+                  "chan14_raw": 0,
+                  "chan15_raw": 0,
+                  "chan16_raw": 0,
+                  "chan17_raw": 0,
+                  "chan18_raw": 0,
+                  "chancount": 0,
+                  "rssi": 255
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:11.777179235Z",
+                    "last_update": "2025-04-21T09:40:58.345030406Z",
+                    "counter": 2744,
+                    "frequency": 0.056969646
+                  }
+                }
+              },
+              "SCALED_IMU2": {
+                "message": {
+                  "type": "SCALED_IMU2",
+                  "time_boot_ms": 1374326,
+                  "xacc": 0,
+                  "yacc": 0,
+                  "zacc": 0,
+                  "xgyro": 0,
+                  "ygyro": 0,
+                  "zgyro": 0,
+                  "xmag": -84,
+                  "ymag": -374,
+                  "zmag": 40,
+                  "temperature": 0
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:11.777867661Z",
+                    "last_update": "2025-04-21T09:40:58.345986015Z",
+                    "counter": 2744,
+                    "frequency": 0.056969646
+                  }
+                }
+              }
+            }
+          },
+          "194": {
+            "id": 194,
+            "messages": {
+              "COMMAND_LONG": {
+                "message": {
+                  "type": "COMMAND_LONG",
+                  "param1": 148,
+                  "param2": 0,
+                  "param3": 0,
+                  "param4": 0,
+                  "param5": 0,
+                  "param6": 0,
+                  "param7": 0,
+                  "command": {
+                    "type": "MAV_CMD_REQUEST_MESSAGE"
+                  },
+                  "target_system": 1,
+                  "target_component": 1,
+                  "confirmation": 0
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:32.554057Z",
+                    "last_update": "2025-04-21T09:39:59.759012687Z",
+                    "counter": 6,
+                    "frequency": 0.00012477385
+                  }
+                }
+              },
+              "DISTANCE_SENSOR": {
+                "message": {
+                  "type": "DISTANCE_SENSOR",
+                  "time_boot_ms": 48154169,
+                  "min_distance": 20,
+                  "max_distance": 12000,
+                  "current_distance": 6083,
+                  "mavtype": {
+                    "type": "MAV_DISTANCE_SENSOR_ULTRASOUND"
+                  },
+                  "id": 1,
+                  "orientation": {
+                    "type": "MAV_SENSOR_ROTATION_PITCH_270"
+                  },
+                  "covariance": 255,
+                  "horizontal_fov": 0.52,
+                  "vertical_fov": 0.52,
+                  "quaternion": [0, 0, 0, 0],
+                  "signal_quality": 1
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:36.633024887Z",
+                    "last_update": "2025-04-21T09:40:58.312746797Z",
+                    "counter": 4982,
+                    "frequency": 0.10348767
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "2": {
+        "id": 2,
+        "components": {
+          "0": {
+            "id": 0,
+            "messages": {
+              "REMOTE_LOG_BLOCK_STATUS": {
+                "message": {
+                  "type": "REMOTE_LOG_BLOCK_STATUS",
+                  "seqno": 2147483646,
+                  "target_system": 1,
+                  "target_component": 0,
+                  "status": {
+                    "type": "MAV_REMOTE_LOG_DATA_BLOCK_ACK"
+                  }
+                },
+                "status": {
+                  "time": {
+                    "first_update": "2025-04-20T20:18:10.779228125Z",
+                    "last_update": "2025-04-21T09:40:58.346369881Z",
+                    "counter": 1374,
+                    "frequency": 0.028525755
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
