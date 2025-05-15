@@ -1,7 +1,9 @@
 <template>
-    <div>
-      <TheHeader />
+  <div>
+    <TheHeader />
+    <UContainer>
       <slot />
-      <TheFooter />
-    </div>
-</template>  
+    </UContainer>
+    <TheFooter />
+  </div>
+</template>

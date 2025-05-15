@@ -46,40 +46,40 @@
 
 <script setup lang="ts">
 
-// const supabase = useSupabaseClient();
-// const toast = useToast();
-// const isLoading = ref(false);
-// const email = ref("");
-// const password = ref("");
+const supabase = useSupabaseClient();
+const toast = useToast();
+const isLoading = ref(false);
+const email = ref("");
+const password = ref("");
 
-// onMounted(async () => {
-//   const {
-//     data: { user },
-//   } = await supabase.auth.getUser();
-//   if (user) {
-//     navigateTo("/");
-//   }
-// });
+onMounted(async () => {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (user) {
+    navigateTo("/");
+  }
+});
 
 const handleLogin = async () => {
-//   isLoading.value = true;
-//   const { error } = await supabase.auth.signInWithPassword({
-//     email: email.value,
-//     password: password.value,
-//   });
+  isLoading.value = true;
+  const { error } = await supabase.auth.signInWithPassword({
+    email: email.value,
+    password: password.value,
+  });
 
-//   if (error) {
-//     console.error("Login error:", error);
-//     toast.add({
-//       title: "Logain failed",
-//       description: error.message,
-//       color: "error",
-//       icon: "ic:baseline-error",
-//     });
-//   } else {
-//     navigateTo("/");
-//   }
+  if (error) {
+    console.error("Login error:", error);
+    toast.add({
+      title: "Logain failed",
+      description: error.message,
+      color: "error",
+      icon: "ic:baseline-error",
+    });
+  } else {
+    navigateTo("/");
+  }
 
-//   isLoading.value = false;
+  isLoading.value = false;
 };
 </script>
