@@ -2,6 +2,13 @@
   <div>
     <h1 class="text-3xl text-center p-2 my-5">Dashboard</h1>
     <div class="grid grid-cols-3 gap-4 mb-10">
+      <UCard v-if="false" variant="outline">
+        <template #header>
+          <h2 class="text-xl font-bold">Post Request</h2>
+        </template>
+        <UButton @click="postLocation">Post Location</UButton>
+        <UButton @click="postBatteryStatus">Post Battery</UButton>
+      </UCard>
       <UCard variant="subtle">
         <template #header>
           <h2 class="text-xl font-bold">Battery Status</h2>
@@ -169,7 +176,7 @@
         <LMap
           style="height: 400px"
           :zoom="6"
-          :center="[47.21322, -1.559482]"
+          :center="[location.lat, location.lon]"
           :use-global-leaflet="false"
         >
           <LTileLayer
@@ -177,6 +184,7 @@
             layer-type="base"
             name="OpenStreetMap"
           />
+          <LMarker :lat-lng="[location.lat, location.lon]" />
         </LMap>
       </UCard>
     </div>
@@ -185,17 +193,8 @@
 <script setup lang="ts">
 import parameteres from "~/assets/mavlink.json";
 import BaseChart from "~/components/BaseChart.vue";
-// import L from "leaflet";
-// import { Marker, Map } from "leaflet";
 
 const data: any = parameteres["vehicles"]["1"]["components"]["1"]["messages"];
-
-// const map = ref<Map>();
-// const mapContainer: any = ref(null);
-// const marker = ref<Marker>();
-// default location is Riyadh
-// const lat = ref(24.7743);
-// const lng = ref(46.7386);
 
 // all below variables can be extracted from data variable.
 const GLOBAL_POSITION_INT = {
@@ -251,13 +250,13 @@ const ATTITUDE = {
 const BATTERY_STATUS = {
   message: {
     type: "BATTERY_STATUS",
-    current_consumed: 190,
-    energy_consumed: 105,
-    temperature: 32767,
+    current_consumed: 190, // mAh
+    energy_consumed: 105, // mWh
+    temperature: 32767, // mC
     voltages: [
       15341, 65535, 65535, 65535, 65535, 65535, 65535, 65535, 65535, 65535,
-    ],
-    current_battery: 63,
+    ], // mV
+    current_battery: 63, // mA
     id: 0,
     battery_function: {
       type: "MAV_BATTERY_FUNCTION_UNKNOWN",
@@ -289,9 +288,9 @@ const SCALED_PRESSURE = {
   message: {
     type: "SCALED_PRESSURE",
     time_boot_ms: 1374326,
-    press_abs: 1003.5706,
-    press_diff: 0,
-    temperature: 3707,
+    press_abs: 1003.5706, // hPa
+    press_diff: 0, // hPa
+    temperature: 3707, // mC
   },
   status: {
     time: {
@@ -309,9 +308,9 @@ const DISTANCE_SENSOR = {
   message: {
     type: "DISTANCE_SENSOR",
     time_boot_ms: 1374286,
-    min_distance: 20,
-    max_distance: 12000,
-    current_distance: 9589,
+    min_distance: 20, // cm
+    max_distance: 12000, // cm
+    current_distance: 9589, // cm
     mavtype: {
       type: "MAV_DISTANCE_SENSOR_ULTRASOUND",
     },
@@ -319,7 +318,7 @@ const DISTANCE_SENSOR = {
     orientation: {
       type: "MAV_SENSOR_ROTATION_PITCH_270",
     },
-    covariance: 0,
+    covariance: 0, 
     horizontal_fov: 0,
     vertical_fov: 0,
     quaternion: [0, 0, 0, 0],
@@ -339,9 +338,9 @@ const GPS_RAW_INT = {
   message: {
     type: "GPS_RAW_INT",
     time_usec: 0,
-    lat: 523648108,
+    lat: 523648108, 
     lon: 665990269,
-    alt: 13394150,
+    alt: 13394150, // cm
     eph: 9999,
     epv: 9999,
     vel: 0,
@@ -351,7 +350,7 @@ const GPS_RAW_INT = {
     },
     satellites_visible: 0,
     alt_ellipsoid: 13368990,
-    h_acc: 4294967295,
+    h_acc: 4294967295, 
     v_acc: 3750107136,
     vel_acc: 20001,
     hdg_acc: 0,
@@ -388,13 +387,37 @@ const VFR_HUD = {
   },
 };
 
-onMounted(() => {
-  // lat.value = GPS_RAW_INT.message.lat / 1e7;
-  // lng.value = GPS_RAW_INT.message.lon / 1e7;
-  // map.value = L.map(mapContainer.value).setView([lat.value, lng.value, ], 10);
-  // L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  //   maxZoom: 13,
-  // }).addTo(map.value);
-  // marker.value = L.marker([lat.value, lng.value], { draggable: true }).addTo(map.value);
+const location = ref({
+  lat: GPS_RAW_INT.message.lat / 10000000,
+  lon: GPS_RAW_INT.message.lon / 10000000,
 });
+
+async function postLocation() {
+  const locationData = {
+    vehicle_id: 1,
+    lat: GPS_RAW_INT.message.lat,
+    lon: GPS_RAW_INT.message.lon
+  };
+  const res = await $fetch('/api/location', {
+    method: 'POST',
+    body: locationData,
+  });
+}
+async function postBatteryStatus() {
+  const battery_status = {
+    vehicle_id: 1,
+    current_consumed: BATTERY_STATUS.message.current_consumed,
+    energy_consumed: BATTERY_STATUS.message.energy_consumed,
+    temperature: BATTERY_STATUS.message.temperature,
+    current_battery: BATTERY_STATUS.message.current_battery,
+    voltages: BATTERY_STATUS.message.voltages,
+
+
+  };
+  const res = await $fetch('/api/battery_status', {
+    method: 'POST',
+    body: battery_status,
+  });
+}
+
 </script>
