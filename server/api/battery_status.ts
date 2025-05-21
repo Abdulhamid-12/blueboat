@@ -26,8 +26,7 @@ function isBatteryStatus(obj: any): obj is battery_status {
 };
 
 export default eventHandler(async (event) => {
-  const client = await serverSupabaseClient(event);
-
+  
   if (event.method === "POST") {
     const body = await readBody(event);
     // Validate the body
@@ -35,6 +34,7 @@ export default eventHandler(async (event) => {
       setResponseStatus(event, 400);
       return { error: "Invalid request body" };
     };
+    const client = await serverSupabaseClient(event);
     const { data, error } = await client.from("battery_status").insert(body as any).select().single();
     if (error)  { 
       setResponseStatus(event, 500); 

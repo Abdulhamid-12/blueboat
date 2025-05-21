@@ -60,53 +60,45 @@
         <template #header>
           <h2 class="text-xl font-bold">Battery Voltage</h2>
         </template>
-        <BaseChart
-          :data="{
-            labels: ['Voltage'],
-            datasets: [
-              {
-                label: 'Battery Voltage',
-                data: [BATTERY_STATUS.message.voltages[0]],
-                backgroundColor: ['#FF6384'],
-              },
-            ],
-          }"
-          :options="{
+        <BaseChart :data="{
+          labels: ['Voltage'],
+          datasets: [
+            {
+              label: 'Battery Voltage',
+              data: [BATTERY_STATUS.message.voltages[0]],
+              backgroundColor: ['#FF6384'],
+            },
+          ],
+        }" :options="{
             responsive: true,
             plugins: {
               legend: {
                 position: 'top',
               },
             },
-          }"
-          type="bar"
-        />
+          }" type="bar" />
       </UCard>
       <UCard variant="subtle">
         <template #header>
           <h2 class="text-xl font-bold">Battery Current</h2>
         </template>
-        <BaseChart
-          :data="{
-            labels: ['Current'],
-            datasets: [
-              {
-                label: 'Battery Current',
-                data: [BATTERY_STATUS.message.current_battery],
-                backgroundColor: ['#36A2EB'],
-              },
-            ],
-          }"
-          :options="{
+        <BaseChart :data="{
+          labels: ['Current'],
+          datasets: [
+            {
+              label: 'Battery Current',
+              data: [BATTERY_STATUS.message.current_battery],
+              backgroundColor: ['#36A2EB'],
+            },
+          ],
+        }" :options="{
             responsive: true,
             plugins: {
               legend: {
                 position: 'top',
               },
             },
-          }"
-          type="bar"
-        />
+          }" type="bar" />
       </UCard>
     </div>
     <div class="grid grid-cols-2 gap-4 mb-10">
@@ -114,76 +106,59 @@
         <template #header>
           <h2 class="text-xl font-bold">Temperature </h2>
         </template>
-        <BaseChart
-          :data="{
-            labels: ['Time'],
-            datasets: [
-              {
-                label: 'Temperature',
-                data: [
+        <BaseChart :data="{
+          labels: ['Time'],
+          datasets: [
+            {
+              label: 'Temperature',
+              data: [
                 SCALED_PRESSURE.message.temperature,
-                ],
-                backgroundColor: ['#FF6384'],
-              },
-            ],
-          }"
-          :options="{
+              ],
+              backgroundColor: ['#FF6384'],
+            },
+          ],
+        }" :options="{
             responsive: true,
             plugins: {
               legend: {
                 position: 'top',
               },
             },
-          }"
-          type="line"
-        />
+          }" type="line" />
       </UCard>
       <UCard variant="subtle">
         <template #header>
           <h2 class="text-xl font-bold">Depth Sensor</h2>
         </template>
-        <BaseChart
-          :data="{
-            labels: ['Current Depth', 'Min Depth', 'Max Depth'],
-            datasets: [
-              {
-                label: 'Depth Sensor',
-                data: [
-                  DISTANCE_SENSOR.message.current_distance,
-                  DISTANCE_SENSOR.message.min_distance,
-                  DISTANCE_SENSOR.message.max_distance,
-                ],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-              },
-            ],
-          }"
-          :options="{
+        <BaseChart :data="{
+          labels: ['Current Depth', 'Min Depth', 'Max Depth'],
+          datasets: [
+            {
+              label: 'Depth Sensor',
+              data: [
+                DISTANCE_SENSOR.message.current_distance,
+                DISTANCE_SENSOR.message.min_distance,
+                DISTANCE_SENSOR.message.max_distance,
+              ],
+              backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+            },
+          ],
+        }" :options="{
             responsive: true,
             plugins: {
               legend: {
                 position: 'top',
               },
             },
-          }"
-          type="bar"
-        />
+          }" type="bar" />
       </UCard>
       <UCard variant="subtle" class="col-span-2">
         <template #header>
           <h2 class="text-xl font-bold">Boat Location</h2>
         </template>
 
-        <LMap
-          style="height: 400px"
-          :zoom="6"
-          :center="[location.lat, location.lon]"
-          :use-global-leaflet="false"
-        >
-          <LTileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            layer-type="base"
-            name="OpenStreetMap"
-          />
+        <LMap style="height: 400px" :zoom="6" :center="[location.lat, location.lon]" :use-global-leaflet="false">
+          <LTileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" layer-type="base" name="OpenStreetMap" />
           <LMarker :lat-lng="[location.lat, location.lon]" />
         </LMap>
       </UCard>
@@ -318,7 +293,7 @@ const DISTANCE_SENSOR = {
     orientation: {
       type: "MAV_SENSOR_ROTATION_PITCH_270",
     },
-    covariance: 0, 
+    covariance: 0,
     horizontal_fov: 0,
     vertical_fov: 0,
     quaternion: [0, 0, 0, 0],
@@ -338,7 +313,7 @@ const GPS_RAW_INT = {
   message: {
     type: "GPS_RAW_INT",
     time_usec: 0,
-    lat: 523648108, 
+    lat: 523648108,
     lon: 665990269,
     alt: 13394150, // cm
     eph: 9999,
@@ -350,7 +325,7 @@ const GPS_RAW_INT = {
     },
     satellites_visible: 0,
     alt_ellipsoid: 13368990,
-    h_acc: 4294967295, 
+    h_acc: 4294967295,
     v_acc: 3750107136,
     vel_acc: 20001,
     hdg_acc: 0,
