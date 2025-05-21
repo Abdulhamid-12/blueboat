@@ -1,10 +1,5 @@
 import { serverSupabaseClient } from "#supabase/server";
-
-interface Location {
-    vehicle_id: number;
-    lat: number;
-    lon: number;
-};
+import { Location } from "../types/interfaces";
 
 function isLocation(obj: any): obj is Location {
   const allowedKeys = ["vehicle_id", "lat", "lon"];

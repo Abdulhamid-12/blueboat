@@ -1,13 +1,5 @@
 import { serverSupabaseClient } from "#supabase/server";
-
-interface Navigation {
-    vehicle_id: number;
-    airspeed: number;
-    groundspeed: number;
-    climb: number;
-    heading: number;
-    throttle: number;
-};
+import { Navigation } from "../types/interfaces";
 
 function isNavigation(obj: any): obj is Navigation {
   const allowedKeys = ["vehicle_id", "airspeed", "groundspeed", "climb", "heading", "throttle"];

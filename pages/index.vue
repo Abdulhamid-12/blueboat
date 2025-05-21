@@ -1,6 +1,29 @@
 <template>
   <div>
     <h1 class="text-3xl text-center p-2 my-5">Dashboard</h1>
+    <div class="flex flex-col justify-center items-center my-4 gap-4">
+      <div>
+        <UButton
+          class="px-4 py-2 rounded bg-blue-600 text-white disabled:bg-gray-400"
+          :disabled="isFetching"
+          @click="toggleFetching"
+          icon="i-heroicons:play-solid"
+          icon-position="left"
+          :loading="isFetching"
+          :loading-text="isFetching ? 'Fetching...' : 'Start Fetching'"
+        >
+          {{ isFetching ? "Fetching..." : "Start Fetching" }}
+        </UButton>
+        <UButton
+          class="ml-2 px-4 py-2 rounded bg-red-600 text-white disabled:bg-gray-400"
+          :disabled="!isFetching"
+          @click="toggleFetching"
+          icon="i-heroicons:stop-solid"
+        >
+          Stop Fetching
+        </UButton>
+      </div>
+    </div>
     <div class="grid grid-cols-3 gap-4 mb-10">
       <UCard v-if="false" variant="outline">
         <template #header>
@@ -13,152 +36,247 @@
         <template #header>
           <h2 class="text-xl font-bold">Battery Status</h2>
         </template>
-        <p>Voltage: {{ BATTERY_STATUS.message.voltages[0] }} mV</p>
-        <p>Current: {{ BATTERY_STATUS.message.current_battery }} A</p>
+        <p>
+          Voltage:
+          {{ battery_statuses[battery_statuses.length - 1]?.voltages[0] }} mV
+        </p>
+        <p>
+          Current:
+          {{ battery_statuses[battery_statuses.length - 1]?.current_consumed }}
+          A
+        </p>
       </UCard>
       <UCard variant="subtle">
         <template #header>
           <h2 class="text-xl font-bold">GPS Position</h2>
         </template>
-        <p>Latitude: {{ GPS_RAW_INT.message.lat }}</p>
-        <p>Longitude: {{ GPS_RAW_INT.message.lon }}</p>
+        <p>Latitude: {{ locations[locations.length - 1]?.lat }}</p>
+        <p>Longitude: {{ locations[locations.length - 1]?.lon }}</p>
       </UCard>
       <UCard variant="subtle">
         <template #header>
           <h2 class="text-xl font-bold">Depth Sensor</h2>
         </template>
-        <p>Current Depth: {{ DISTANCE_SENSOR.message.current_distance }} cm</p>
-        <p>Min Depth: {{ DISTANCE_SENSOR.message.min_distance }} cm</p>
-        <p>Max Depth: {{ DISTANCE_SENSOR.message.max_distance }} cm</p>
+        <p>
+          Current Depth:
+          {{ distances[distances.length - 1]?.current_distance }} cm
+        </p>
+        <p>Min Depth: {{ distances[distances.length - 1]?.min_distance }} cm</p>
+        <p>Max Depth: {{ distances[distances.length - 1]?.max_distance }} cm</p>
       </UCard>
       <UCard variant="subtle">
         <template #header>
           <h2 class="text-xl font-bold">Attitude</h2>
         </template>
-        <p>Roll: {{ ATTITUDE.message.roll }}</p>
-        <p>Pitch: {{ ATTITUDE.message.pitch }}</p>
-        <p>Yaw: {{ ATTITUDE.message.yaw }}</p>
+        <p>Roll: {{ attitudes[attitudes.length - 1]?.roll }}</p>
+        <p>Pitch: {{ attitudes[attitudes.length - 1]?.pitch }}</p>
+        <p>Yaw: {{ attitudes[attitudes.length - 1]?.yaw }}</p>
       </UCard>
       <UCard variant="subtle">
         <template #header>
-          <h2 class="text-xl font-bold">VFR HUD</h2>
+          <h2 class="text-xl font-bold">Navigation Status</h2>
         </template>
-        <p>Ground Speed: {{ Navigation.message.groundspeed }} m/s</p>
-        <p>Altitude: {{ Navigation.message.alt }} m</p>
-        <p>Heading: {{ Navigation.message.heading }}</p>
+        <p>
+          Ground Speed:
+          {{ navigations[navigations.length - 1]?.groundspeed }} m/s
+        </p>
+        <p>Throttle: {{ navigations[navigations.length - 1]?.throttle }} m</p>
+        <p>Heading: {{ navigations[navigations.length - 1]?.heading }}</p>
       </UCard>
       <UCard variant="subtle">
         <template #header>
           <h2 class="text-xl font-bold">Scaled Pressure</h2>
         </template>
-        <p>Pressure: {{ SCALED_PRESSURE.message.press_abs }} hPa</p>
-        <p>Temperature: {{ SCALED_PRESSURE.message.temperature }} °C</p>
+        <p>
+          Pressure:
+          {{ scaled_pressures[scaled_pressures.length - 1]?.press_abs }} hPa
+        </p>
+        <p>
+          Temperature:
+          {{ scaled_pressures[scaled_pressures.length - 1]?.temperature }} °C
+        </p>
       </UCard>
+    </div>
+    <div class="flex justify-center flex-col items-center gap-4 my-4">
+      <UButton icon="" @click="generate" :loading="isGenerating"
+        >Generate Insights</UButton
+      >
+      <UTextarea
+        class="w-full ml-4"
+        v-model="aiOutput"
+        :placeholder="aiOutput ? aiOutput : 'AI Output'"
+        :rows="5"
+        :loading="isGenerating"
+        :loading-text="isGenerating ? 'Generating...' : 'AI Output'"
+        readonly
+      />
     </div>
     <div class="grid grid-cols-2 gap-4 mb-10">
       <UCard variant="subtle">
         <template #header>
           <h2 class="text-xl font-bold">Battery Voltage</h2>
         </template>
-        <BaseChart :data="{
-          labels: ['Voltage'],
-          datasets: [
-            {
-              label: 'Battery Voltage',
-              data: [BATTERY_STATUS.message.voltages[0]],
-              backgroundColor: ['#FF6384'],
-            },
-          ],
-        }" :options="{
+        <BaseChart
+          :data="{
+            labels: battery_statuses.map((status) =>
+              new Date(status.created_at).toLocaleTimeString()
+            ),
+            datasets: [
+              {
+                label: 'Current Consumed',
+                data: battery_statuses.map((status) => status.current_consumed),
+                backgroundColor: ['#FF6384'],
+              },
+              {
+                label: 'Energy Consumed',
+                data: battery_statuses.map((status) => status.energy_consumed),
+                backgroundColor: ['#36A2EB'],
+              },
+              {
+                label: 'Current Battery',
+                data: battery_statuses.map((status) => status.current_battery),
+                backgroundColor: ['#4BC0C0'],
+              },
+            ],
+          }"
+          :options="{
             responsive: true,
             plugins: {
               legend: {
                 position: 'top',
               },
             },
-          }" type="bar" />
+          }"
+          type="line"
+        />
       </UCard>
       <UCard variant="subtle">
         <template #header>
-          <h2 class="text-xl font-bold">Battery Current</h2>
+          <h2 class="text-xl font-bold">Attitude</h2>
         </template>
-        <BaseChart :data="{
-          labels: ['Current'],
-          datasets: [
-            {
-              label: 'Battery Current',
-              data: [BATTERY_STATUS.message.current_battery],
-              backgroundColor: ['#36A2EB'],
-            },
-          ],
-        }" :options="{
+        <BaseChart
+          :data="{
+            labels: attitudes.map((status) =>
+              new Date(status.created_at).toLocaleTimeString()
+            ),
+            datasets: [
+              {
+                label: 'Roll',
+                data: attitudes.map((status) => status.roll),
+                backgroundColor: ['#FF6384'],
+              },
+              {
+                label: 'Pitch',
+                data: attitudes.map((status) => status.pitch),
+                backgroundColor: ['#36A2EB'],
+              },
+              {
+                label: 'Yaw',
+                data: attitudes.map((status) => status.yaw),
+                backgroundColor: ['#FFCE56'],
+              },
+            ],
+          }"
+          :options="{
             responsive: true,
             plugins: {
               legend: {
                 position: 'top',
               },
             },
-          }" type="bar" />
+          }"
+          type="line"
+        />
       </UCard>
     </div>
     <div class="grid grid-cols-2 gap-4 mb-10">
       <UCard variant="subtle">
         <template #header>
-          <h2 class="text-xl font-bold">Temperature </h2>
+          <h2 class="text-xl font-bold">Temperature mC</h2>
         </template>
-        <BaseChart :data="{
-          labels: ['Time'],
-          datasets: [
-            {
-              label: 'Temperature',
-              data: [
-                SCALED_PRESSURE.message.temperature,
-              ],
-              backgroundColor: ['#FF6384'],
-            },
-          ],
-        }" :options="{
+        <BaseChart
+          :data="{
+            labels: scaled_pressures.map((status) =>
+              new Date(status.created_at).toLocaleTimeString()
+            ),
+            datasets: [
+              {
+                label: 'Pressure',
+                data: scaled_pressures.map((status) => status.press_abs),
+                backgroundColor: ['#36A2EB'],
+              },
+              {
+                label: 'Pressure Difference',
+                data: scaled_pressures.map((status) => status.press_abs),
+                backgroundColor: ['#FFCE56'],
+              },
+            ],
+          }"
+          :options="{
             responsive: true,
             plugins: {
               legend: {
                 position: 'top',
               },
             },
-          }" type="line" />
+          }"
+          type="line"
+        />
       </UCard>
       <UCard variant="subtle">
         <template #header>
-          <h2 class="text-xl font-bold">Depth Sensor</h2>
+          <h2 class="text-xl font-bold">Depth Sensor cm</h2>
         </template>
-        <BaseChart :data="{
-          labels: ['Current Depth', 'Min Depth', 'Max Depth'],
-          datasets: [
-            {
-              label: 'Depth Sensor',
-              data: [
-                DISTANCE_SENSOR.message.current_distance,
-                DISTANCE_SENSOR.message.min_distance,
-                DISTANCE_SENSOR.message.max_distance,
-              ],
-              backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-            },
-          ],
-        }" :options="{
+        <BaseChart
+          :data="{
+            labels: distances.map((status) =>
+              new Date(status.created_at).toLocaleTimeString()
+            ),
+            datasets: [
+              {
+                label: 'Current Depth',
+                data: distances.map((status) => status.current_distance),
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+              },
+              {
+                label: 'Min Depth',
+                data: distances.map((status) => status.min_distance),
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+              },
+              {
+                label: 'Max Depth',
+                data: distances.map((status) => status.max_distance),
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+              },
+            ],
+          }"
+          :options="{
             responsive: true,
             plugins: {
               legend: {
                 position: 'top',
               },
             },
-          }" type="bar" />
+          }"
+          type="line"
+        />
       </UCard>
       <UCard variant="subtle" class="col-span-2">
         <template #header>
           <h2 class="text-xl font-bold">Boat Location</h2>
         </template>
 
-        <LMap style="height: 400px" :zoom="6" :center="[location.lat, location.lon]" :use-global-leaflet="false">
-          <LTileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" layer-type="base" name="OpenStreetMap" />
+        <LMap
+          style="height: 400px"
+          :zoom="6"
+          :center="[location.lat, location.lon]"
+          :use-global-leaflet="false"
+        >
+          <LTileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            layer-type="base"
+            name="OpenStreetMap"
+          />
           <LMarker :lat-lng="[location.lat, location.lon]" />
         </LMap>
       </UCard>
@@ -168,6 +286,82 @@
 <script setup lang="ts">
 import parameteres from "~/assets/mavlink.json";
 import BaseChart from "~/components/BaseChart.vue";
+import type {
+  Distance,
+  battery_status,
+  Navigation,
+  Location,
+  SCALED_PRESSURE,
+  Attitude,
+} from "~/server/types/interfaces";
+
+const config = useRuntimeConfig();
+
+const distances = ref<Distance[]>([]);
+const battery_statuses = ref<battery_status[]>([]);
+const locations = ref<Location[]>([]);
+const navigations = ref<Navigation[]>([]);
+const scaled_pressures = ref<SCALED_PRESSURE[]>([]);
+const attitudes = ref<Attitude[]>([]);
+const isFetching = ref(false);
+const aiOutput = ref<string | null>(null);
+const isGenerating = ref(false);
+let intervalId: NodeJS.Timeout | null = null;
+
+const generate = async () => {
+  isGenerating.value = true;
+  aiOutput.value = null;
+  try {
+    const response: any = await $fetch("/api/generate_insights", {
+      method: "POST",
+      body: {
+        distances: distances.value,
+        battery_statuses: battery_statuses.value,
+        locations: locations.value,
+        navigations: navigations.value,
+        scaled_pressures: scaled_pressures.value,
+        attitudes: attitudes.value,
+      },
+    });
+    aiOutput.value =
+      response?.result || response?.error || "No response from AI.";
+  } catch (error: any) {
+    aiOutput.value =
+      error?.data?.error || error.message || "Failed to generate insights.";
+    console.error("Error generating response:", error);
+  } finally {
+    isGenerating.value = false;
+  }
+};
+
+const fetchAllData = async () => {
+  const res: any = await $fetch("/api/all_data", { method: "GET" });
+  distances.value = [...res.data.distance_sensor];
+  battery_statuses.value = [...res.data.battery_status];
+  locations.value = [...res.data.location];
+  navigations.value = [...res.data.navigation];
+  scaled_pressures.value = [...res.data.scaled_pressure];
+  attitudes.value = [...res.data.attitude];
+};
+
+const toggleFetching = () => {
+  isFetching.value = !isFetching.value;
+  if (isFetching.value) {
+    fetchAllData();
+    intervalId = setInterval(fetchAllData, 1000);
+  } else if (intervalId) {
+    clearInterval(intervalId);
+    intervalId = null;
+  }
+};
+
+onMounted(() => {
+  fetchAllData();
+});
+
+onUnmounted(() => {
+  if (intervalId) clearInterval(intervalId);
+});
 
 const data: any = parameteres["vehicles"]["1"]["components"]["1"]["messages"];
 
@@ -371,10 +565,10 @@ async function postLocation() {
   const locationData = {
     vehicle_id: 1,
     lat: GPS_RAW_INT.message.lat,
-    lon: GPS_RAW_INT.message.lon
+    lon: GPS_RAW_INT.message.lon,
   };
-  const res = await $fetch('/api/location', {
-    method: 'POST',
+  const res = await $fetch("/api/location", {
+    method: "POST",
     body: locationData,
   });
 }
@@ -386,13 +580,10 @@ async function postBatteryStatus() {
     temperature: BATTERY_STATUS.message.temperature,
     current_battery: BATTERY_STATUS.message.current_battery,
     voltages: BATTERY_STATUS.message.voltages,
-
-
   };
-  const res = await $fetch('/api/battery_status', {
-    method: 'POST',
+  const res = await $fetch("/api/battery_status", {
+    method: "POST",
     body: battery_status,
   });
 }
-
 </script>

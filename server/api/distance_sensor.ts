@@ -1,11 +1,5 @@
 import { serverSupabaseClient } from "#supabase/server";
-
-interface Distance {
-    vehicle_id: number;
-    min_distance: number;
-    max_distance: number;
-    current_distance: number;
-};
+import { Distance } from "../types/interfaces";
 
 function isDistance(obj: any): obj is Distance {
   const allowedKeys = ["vehicle_id", "min_distance", "max_distance", "current_distance"];
@@ -21,7 +15,17 @@ function isDistance(obj: any): obj is Distance {
 };
 
 export default eventHandler(async (event) => {
-  
+  // Set CORS headers for all responses
+  event.res.setHeader("Access-Control-Allow-Origin", "*");
+  event.res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  event.res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (event.method === "OPTIONS") {
+    // Respond to preflight request
+    setResponseStatus(event, 204); // No Content
+    return "";
+  }
+
   if (event.method === "POST") {
     const body = await readBody(event);
     // Validate the body

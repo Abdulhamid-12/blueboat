@@ -1,14 +1,5 @@
 import { serverSupabaseClient } from "#supabase/server";
-
-interface battery_status {
-    vehicle_id: number;
-    current_consumed: number;
-    energy_consumed: number;
-    temperature: number;
-    voltages: number[];
-    current_battery: number;
-};
-
+import { battery_status } from "../types/interfaces";
 function isBatteryStatus(obj: any): obj is battery_status {
   const allowedKeys = ["vehicle_id", "current_consumed", "energy_consumed", "temperature", "voltages", "current_battery"];
   return (
