@@ -43,9 +43,9 @@
         <template #header>
           <h2 class="text-xl font-bold">VFR HUD</h2>
         </template>
-        <p>Ground Speed: {{ VFR_HUD.message.groundspeed }} m/s</p>
-        <p>Altitude: {{ VFR_HUD.message.alt }} m</p>
-        <p>Heading: {{ VFR_HUD.message.heading }}</p>
+        <p>Ground Speed: {{ Navigation.message.groundspeed }} m/s</p>
+        <p>Altitude: {{ Navigation.message.alt }} m</p>
+        <p>Heading: {{ Navigation.message.heading }}</p>
       </UCard>
       <UCard variant="subtle">
         <template #header>
@@ -342,7 +342,7 @@ const GPS_RAW_INT = {
 };
 // Purpose: Show the boat's speed over ground and its current direction.
 // A line chart for historical data and a gauge for real-time heading are useful.
-const VFR_HUD = {
+const Navigation = {
   message: {
     type: "VFR_HUD",
     airspeed: 0,
