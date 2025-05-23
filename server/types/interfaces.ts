@@ -51,3 +51,17 @@ export interface SCALED_PRESSURE {
     temperature: number;
     created_at: string;
 }
+
+export interface FactoryTank {
+    flow_in: number;
+    flow_out: number;
+    pump1_status: boolean;
+    pump1_power: number;
+    pump1_vibration: number;
+    pump1_temp: number;
+    tank_level: number;
+    valve_fill: boolean;
+    valve_discharge: boolean;
+    voltage: number;
+    anomaly_triggered: boolean;
+}
